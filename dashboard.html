@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - SafeBox{% endblock %}
+{% block content %}
+<h2>Vos données sécurisées</h2>
+<a href="{{ url_for('dashboard.add') }}" class="btn btn-primary mb-3">Ajouter une donnée</a>
+<div class="list-group">
+  {% for item in items %}
+    <div class="list-group-item">
+      <h5>{{ item.title }}</h5>
+      <pre>{{ item.content }}</pre>
+      <a href="{{ url_for('dashboard.delete', item_id=item.id) }}" class="btn btn-sm btn-danger">Supprimer</a>
+    </div>
+  {% else %}
+    <p>Aucune donnée enregistrée.</p>
+  {% endfor %}
+</div>
+{% endblock %}
